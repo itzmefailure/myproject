@@ -14,7 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 1. Database Connection (MongoDB)
 // Yahan aap apna MongoDB Atlas connection string ya local DB use kar sakte hain
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/msquareDB";
+// server.js update
+// server.js mein purani link ko isse badal dein
+const mongoURI = "mongodb+srv://deepaksharma0401:missionmsquare0401@cluster0.dmgwc52.mongodb.net/?appName=Cluster0";
+
+
+
+mongoose.connect(mongoURI)
+    .then(() => console.log("🚀 M Square Cloud DB is Live!"))
+    .catch(err => console.log("❌ DB Error: ", err));
 
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ MongoDB Connected Successfully"))
