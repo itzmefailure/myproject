@@ -10,13 +10,4 @@ services:
         sync: false # Iska matlab aap Atlas ki link manual daalenge security ke liye
       - key: NODE_VERSION
         value: 18.0.0
-
-        const path = require('path');
-
-// 1. Static files ko allow karein (CSS, JS, Images ke liye)
-app.use(express.static(path.join(__dirname, './')));
-
-// 2. Root route par index.html bhejein (Isse "Cannot GET /" theek hoga)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
 });
