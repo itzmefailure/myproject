@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Square - Excellence in Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --hover-gold: #FFD700;
+            --bg-black: #0a0a0a;
+            --card-bg: #151515;
+            --input-bg: #1f1f1f;
+            --white: #ffffff;
+            --text-gray: #b3b3b3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        .logo { font-size: 28px; font-weight: 700; color: var(--primary-gold); letter-spacing: 2px; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-gold); }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1470');
+            background-size: cover;
+            margin-top: 60px;
+        }
+        .hero h1 { font-size: 3.5rem; color: var(--primary-gold); }
+
+        /* General Section Styling */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 40px; }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group.full-width { grid-column: span 2; }
+
+        label { display: block; margin-bottom: 8px; color: var(--primary-gold); font-weight: 500; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--input-bg);
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Buttons Styling */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: none;
+            flex: 1;
+        }
+
+        .btn-submit {
+            background: var(--primary-gold);
+            color: black;
+        }
+
+        .btn-submit:hover {
+            background: var(--hover-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-reset:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* Courses/Cards - Shared from previous */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .course-card { background: var(--card-bg); padding: 30px 15px; text-align: center; border-radius: 15px; cursor: pointer; border: 1px solid #333; transition: 0.4s; }
+        .course-card:hover { border-color: var(--primary-gold); }
+        .subject-list { display: none; margin-top: 15px; text-align: left; padding-left: 15px; animation: fadeIn 0.4s; }
+        .active-card .subject-list { display: block; color: var(--text-gray); }
+        .active-card h3 { color: var(--primary-gold); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Footer */
+        footer { padding: 40px; text-align: center; background: #000; border-top: 1px solid #222; margin-top: 50px; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">M SQUARE</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Streams</a></li>
+            <li><a href="#admission">Admission</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>M SQUARE ACADEMY</h1>
+        <p>Premium Education for UP, CBSE, Competitive & IT Fields</p>
+    </section>
+
+    <section id="courses">
+        <h2 class="section-title">Academic Streams</h2>
+        <div class="course-grid">
+            <div class="course-card" onclick="toggleSubjects(this)">
+                <h3>UP Board</h3>
+                <ul class="subject-list"><li>Math, Physics, Chemistry, Bio</li></ul>
+            </div>
+            <div class="course-card" onclick="toggleSubjects(this)">
+                <h3>CBSE Board</h3>
+                <ul class="subject-list"><li>Math, Physics, Chemistry, Bio</li></ul>
+            </div>
+            <div class="course-card" onclick="toggleSubjects(this)">
+                <h3>Competitive</h3>
+                <ul class="subject-list"><li>Math, Reasoning, GK & GS</li></ul>
+            </div>
+            <div class="course-card" onclick="toggleSubjects(this)">
+                <h3>IT Field</h3>
+                <ul class="subject-list"><li>Data Science, Full Stack, Cyber Security, AI, Robotics</li></ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission">
+        <h2 class="section-title">Admission Form</h2>
+        <div class="form-container">
+            <form id="admissionForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Student Name</label>
+                        <input type="text" placeholder="Enter Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Father's Name</label>
+                        <input type="text" placeholder="Enter Father's Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Stream</label>
+                        <select required>
+                            <option value="">Choose Stream</option>
+                            <option>UP Board</option>
+                            <option>CBSE Board</option>
+                            <option>Competitive Exam</option>
+                            <option>IT Field</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Address</label>
+                        <textarea rows="3" placeholder="Enter Your Full Address"></textarea>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-submit">Submit Application</button>
+                    <button type="reset" class="btn btn-reset">Reset Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact" style="background: #050505;">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="How can we help you?" required></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                    <button type="reset" class="btn btn-reset">Clear</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div style="color: var(--primary-gold); font-weight: bold; font-size: 1.5rem;">M SQUARE</div>
+        <p>Founder: Deepak Sharma | Co-Founder: Shubhanshu Tripathi</p>
+        <p style="margin-top: 10px; color: #555;">&copy; 2026 M Square Academy. Designed for Future Leaders.</p>
+    </footer>
+
+    <script>
+        function toggleSubjects(card) {
+            const allCards = document.querySelectorAll('.course-card');
+            allCards.forEach(c => { if (c !== card) c.classList.remove('active-card'); });
+            card.classList.toggle('active-card');
+        }
+
+        // Form Submit Alerts
+        document.getElementById('admissionForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Success! Deepak Sharma & Team will review your Admission form soon.');
+        };
+        document.getElementById('contactForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Message Sent! We will contact you shortly.');
+        };
+        // Admission Form Submission
+document.getElementById('admissionForm').onsubmit = async (e) => {
+    e.preventDefault();
+    
+    // Form se data nikalna
+    const formData = {
+        studentName: e.target[0].value,
+        fatherName: e.target[1].value,
+        phone: e.target[2].value,
+        stream: e.target[3].value,
+        address: e.target[4].value
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/api/admission', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        const result = await response.json();
+        if(result.success) {
+            alert('M Square: Admission Form Submitted Successfully!');
+            e.target.reset();
+        }
+    } catch (error) {
+        alert('Server Connect Nahi Ho Pa Raha!');
+    }
+};
+
+// Contact Form Submission
+document.getElementById('contactForm').onsubmit = async (e) => {
+    e.preventDefault();
+    
+    const contactData = {
+        name: e.target[0].value,
+        email: e.target[1].value,
+        message: e.target[2].value
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(contactData)
+        });
+        const result = await response.json();
+        if(result.success) {
+            alert('Deepak Sharma & Team will contact you soon!');
+            e.target.reset();
+        }
+    } catch (error) {
+        alert('Server Error!');
+    }
+};
+    </script>
+</body>
+</html>
