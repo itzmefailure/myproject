@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M Square | Excellence in Education</title>
+    <meta name="description" content="M Square Institute in Banda - Premium coaching for Boards, Competitive Exams, and IT skills like Generative AI and Data Science.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -16,12 +17,138 @@
         .form-input { background: #111; border: 1px solid #333; color: white; padding: 10px; width: 100%; border-radius: 5px; }
         .form-input:focus { border-color: #D4AF37; outline: none; }
         .hidden-section { display: none; }
+        
+.announcement-box-modern {
+    background: linear-gradient(145deg, #1a1a1a, #000);
+    border: 1px solid #D4AF37;
+    border-left: 8px solid #D4AF37;
+    color: #fff;
+    padding: 25px;
+    margin: 40px auto;
+    border-radius: 12px;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+  }
+  .gold-btn-contact {
+    background: #D4AF37;
+    color: #000;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+/* स्मूथ स्क्रॉलिंग के लिए */
+html {
+    scroll-behavior: smooth;
+}
+
+/* एनीमेशन के लिए क्लास */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* जब सेक्शन स्क्रीन पर आएगा तब यह क्लास लगेगी */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* लाइट मोड के कलर्स */
+/* लाइट मोड में 'SQUARE' को काला करने के लिए */
+body.light-mode h1 span.text-white {
+    color: #1a1a1a !important;
+}
+/* लाइट मोड में मोबाइल मेनू का बैकग्राउंड */
+body.light-mode #mobile-menu {
+    background-color: #ffffff;
+    border-top: 1px solid #eeeeee;
+}
+
+/* लाइट मोड में हैमबर्गर आइकॉन का रंग */
+body.light-mode #menu-btn {
+    color: #1a1a1a;
+}
+
+/* लाइट मोड में मोबाइल मेनू के लिंक्स (Topics) का रंग */
+body.light-mode #mobile-menu a {
+    color: #1a1a1a;
+}
+
+/* लाइट मोड में मोबाइल मेनू का बॉर्डर */
+body.light-mode nav {
+    border-bottom: 1px solid #eeeeee;
+}
+/* लाइट मोड में इनपुट का टेक्स्ट काला करने के लिए */
+body.light-mode .form-input {
+    color: #1a1a1a !important; /* लिखने वाला अक्षर काला होगा */
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+}
+
+/* लाइट मोड में प्लेसहोल्डर (जो हल्का लिखा रहता है) को दिखाने के लिए */
+body.light-mode .form-input::placeholder {
+    color: #6b7280 !important; /* ग्रे कलर का प्लेसहोल्डर */
+}
+
+/* ड्रॉपडाउन (Select) के अंदर के ऑप्शन्स को ठीक करने के लिए */
+body.light-mode select.form-input option {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+/* एडमिशन फॉर्म के लेबल या हेडिंग अगर गायब हो रही हो */
+body.light-mode #admission h3 {
+    color: #D4AF37; /* गोल्ड हेडिंग बनी रहेगी */
+}
+body.light-mode .card-gradient {
+    background: #f9f9f9;
+    border: 1px solid #e2e2e2;
+    color: #1a1a1a;
+}
+
+body.light-mode nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+body.light-mode .bg-zinc-900\/50, 
+body.light-mode .bg-zinc-900\/30 {
+    background-color: #f3f4f6;
+}
+
+body.light-mode #admission, 
+body.light-mode #contact {
+    background-color: #ffffff;
+    border-color: #e2e2e2;
+}
+
+body.light-mode .form-input {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #000;
+}
+
+body.light-mode .text-zinc-400, 
+body.light-mode .text-zinc-300, 
+body.light-mode .text-zinc-500 {
+    color: #4b5563;
+}
     </style>
 </head>
+<button id="backToTop" class="fixed bottom-8 right-8 gold-bg text-black p-3 rounded-full shadow-2xl transition-all duration-300 transform scale-0 z-[60] hover:scale-110 hover:bg-white active:scale-95">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
 <body>
 
-    <nav class="flex justify-between items-center p-6 border-b border-zinc-800 sticky top-0 bg-black z-50">
+    <nav class="p-6 border-b border-zinc-800 sticky top-0 bg-black z-50">
+    <div class="flex justify-between items-center">
         <h1 class="text-3xl font-bold gold-text">M <span class="text-white">SQUARE</span></h1>
+        
         <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
             <a href="#home" class="hover:text-[#D4AF37]">Home</a>
             <a href="#about" class="hover:text-[#D4AF37]">About</a>
@@ -29,7 +156,32 @@
             <a href="#admission" class="hover:text-[#D4AF37]">Admission</a>
             <a href="#contact" class="hover:text-[#D4AF37]">Contact</a>
         </div>
-    </nav>
+
+        <div class="md:hidden">
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col space-y-4 mt-4 pb-4 border-t border-zinc-800 pt-4 text-center uppercase tracking-widest text-sm">
+        <a href="#home" class="hover:text-[#D4AF37]" onclick="toggleMenu()">Home</a>
+        <a href="#about" class="hover:text-[#D4AF37]" onclick="toggleMenu()">About</a>
+        <a href="#streams" class="hover:text-[#D4AF37]" onclick="toggleMenu()">Courses</a>
+        <a href="#admission" class="hover:text-[#D4AF37]" onclick="toggleMenu()">Admission</a>
+        <a href="#contact" class="hover:text-[#D4AF37]" onclick="toggleMenu()">Contact</a>
+    </div>
+    <button id="theme-toggle" class="p-2 rounded-full hover:bg-zinc-800 transition-all duration-300">
+    <svg id="sun-icon" class="w-6 h-6 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+    </svg>
+    <svg id="moon-icon" class="w-6 h-6 text-zinc-400" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+    </svg>
+</button>
+</nav>
 
     <section id="home" class="py-20 text-center px-4">
         <h2 class="text-5xl md:text-7xl font-bold mb-6">Shape Your <span class="gold-text">Future</span></h2>
@@ -97,54 +249,84 @@
     <section class="py-20 px-6 bg-zinc-900/30">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
             
-            <div id="admission" class="bg-black p-8 rounded-2xl border border-zinc-800 shadow-xl">
-                <h3 class="text-2xl font-bold mb-6 gold-text">Admission Form</h3>
-                <form class="space-y-4">
-                    <input type="text" placeholder="Full Name" class="form-input">
-                    <input type="email" placeholder="Email Address" class="form-input">
-                    <select class="form-input">
-                        <option>Select Stream</option>
-                        <option>UP Board</option>
-                        <option>CBSE Board</option>
-                        <option>Competitive</option>
-                        <option>IT Field</option>
-                    </select>
-                    <div class="flex gap-2">
-                        <button type="submit" class="w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition">SUBMIT</button>
-                        <button type="reset" class="w-1/2 border gold-border gold-text font-bold py-3 rounded hover:bg-zinc-800 transition">RESET</button>
-                    </div>
-                </form>
-            </div>
+<div id="admission" class="bg-black p-8 rounded-2xl border border-zinc-800 shadow-xl">
+    <h3 class="text-2xl font-bold mb-6 gold-text">Admission Form</h3>
+    <form action="/your-backend-endpoint" method="POST" class="space-y-4">
+        
+        <input type="text" name="full_name" placeholder="Full Name" class="form-input" required>
+        
+        <input type="email" name="email" placeholder="Email Address" class="form-input" required>
+        
+        <select name="stream" class="form-input cursor-pointer" required>
+            <option value="" class="bg-black">Select Stream</option>
+            <option value="up_board" class="bg-black">UP Board</option>
+            <option value="cbse_board" class="bg-black">CBSE Board</option>
+            <option value="competitive" class="bg-black">Competitive</option>
+            <option value="it_field" class="bg-black">IT Field</option>
+        </select>
 
-            <div id="contact" class="bg-black p-8 rounded-2xl border border-zinc-800 shadow-xl">
-                <h3 class="text-2xl font-bold mb-6 gold-text">Contact Us</h3>
-                <form class="space-y-4">
-                    <input type="text" placeholder="Subject" class="form-input">
-                    <textarea placeholder="Your Message" rows="4" class="form-input"></textarea>
-                    <div class="flex gap-2">
-                        <button type="submit" class="w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition">SUBMIT</button>
-                        <button type="reset" class="w-1/2 border gold-border gold-text font-bold py-3 rounded hover:bg-zinc-800 transition">RESET</button>
-                    </div>
-                </form>
-            </div>
+        <input type="text" name="subject" placeholder="Subject" class="form-input" required>
+        
+        <textarea name="message" placeholder="Your Message (Optional)" rows="4" class="form-input"></textarea>
 
+        <div class="flex gap-4">
+            <button type="submit" class="submit-btn w-full md:w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition uppercase tracking-wider flex items-center justify-center gap-2">
+    <span class="btn-text">Submit</span>
+    <div class="loader hidden w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+</button>
+
+            <button type="reset" class="w-1/2 border gold-border gold-text font-bold py-3 rounded hover:bg-zinc-800 transition uppercase tracking-wider">
+                Reset
+            </button>
         </div>
-    </section>
+    </form>
+</div>
 
+        <div id="contact" class="bg-black p-8 rounded-2xl border border-zinc-800 shadow-xl">
+    <h3 class="text-2xl font-bold mb-6 gold-text">Contact Us</h3>
+    <form class="space-y-4">
+        <input type="text" name="contact_subject" placeholder="Subject" class="form-input" required>
+        
+        <textarea name="contact_message" placeholder="Your Message" rows="4" class="form-input" required></textarea>
+        
+        <div class="flex gap-2">
+           <button type="submit" class="submit-btn w-full md:w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition uppercase tracking-wider flex items-center justify-center gap-2">
+    <span class="btn-text">Submit</span>
+    <div class="loader hidden w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+</button>
+            <button type="reset" class="w-1/2 border gold-border gold-text font-bold py-3 rounded hover:bg-zinc-800 transition uppercase tracking-wider">
+                RESET
+            </button>
+        </div>
+    </form>
+</div>
+    </section>
+    <div id="success-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] hidden">
+    <div class="card-gradient p-8 rounded-2xl border-2 gold-border text-center max-w-sm mx-4">
+        <div class="text-5xl mb-4">✅</div>
+        <h3 class="text-2xl font-bold gold-text mb-2">Submitted!</h3>
+        <p class="text-zinc-300 mb-6">M Square team will contact you soon. Stay Tuned!</p>
+        <button onclick="closeModal()" class="gold-bg text-black font-bold px-6 py-2 rounded-full hover:bg-white transition">
+            Awesome!
+        </button>
+    </div>
+</div>
     <footer class="py-10 border-t border-zinc-800 text-center text-zinc-500 text-sm">
         <p>&copy; 2026 M Square Institute. All Rights Reserved.</p>
         <p class="mt-2">Designed for Excellence.</p>
         <div class="announcement-box">
-  <div class="announcement-content">
-    <span class="warning-icon">⚠️</span>
-    <div class="text-container">
-      <h3>Coming Soon: Banda (Uttar Pradesh) 210001</h3>
-      <p>जो भी चाहते हैं यह वेबसाइट अपने शहर <strong>बाँदा</strong> में लॉन्च हो, वे इस वेबसाइट का स्क्रीनशॉट लेकर नीचे दिए गए नंबर पर <strong>"Okey"</strong> लिखकर भेजें।</p>
-      <div class="contact-number">Contact: 8423996254</div>
+  <div class="announcement-box-modern mx-4">
+  <div class="flex flex-col md:flex-row items-center gap-6">
+    <div class="text-4xl">📢</div>
+    <div class="text-center md:text-left">
+      <h3 class="text-xl font-bold gold-text mb-2">Coming Soon: Banda (UP) 210001</h3>
+      <p class="text-zinc-300 text-sm md:text-base">
+        जो भी चाहते हैं यह वेबसाइट अपने शहर <b>बाँदा</b> में लॉन्च हो, वे स्क्रीनशॉट लेकर नीचे दिए नंबर पर <b>"Okey"</b> लिखकर भेजें।
+      </p>
+      <a href="https://wa.me/918423996254" class="gold-btn-contact">WhatsApp: 8423996254</a>
     </div>
   </div>
 </div>
-
 <style>
   .announcement-box {
     background-color: #fff3cd;
@@ -237,6 +419,142 @@
             document.getElementById('stream-container').classList.remove('hidden-section');
             document.getElementById('subject-view').classList.add('hidden-section');
         }
+        
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+function toggleMenu() {
+    mobileMenu.classList.add('hidden');
+}
+// Scroll Reveal Animation Logic
+const revealSections = () => {
+    const sections = document.querySelectorAll('section');
+    const triggerBottom = window.innerHeight * 0.85; // 85% स्क्रीन पर आते ही ट्रिगर होगा
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+            section.classList.add('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', () => {
+    
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('reveal');
+    });
+    revealSections(); 
+});
+function goBack() {
+    document.getElementById('stream-container').classList.remove('hidden-section');
+    document.getElementById('subject-view').classList.add('hidden-section');
+    window.scrollTo({ top: document.getElementById('streams').offsetTop - 100, behavior: 'smooth' });
+}
+// 1. पॉपअप बंद करने का फंक्शन (इसे सबसे ऊपर या कहीं भी रख सकते हैं)
+function closeModal() {
+    const successModal = document.getElementById('success-modal');
+    if (successModal) {
+        successModal.classList.add('hidden');
+    }
+}
+
+// 2. फॉर्म सबमिशन लॉजिक
+const forms = document.querySelectorAll('form');
+
+forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const loader = submitBtn.querySelector('.loader');
+        const modal = document.getElementById('success-modal'); // यहाँ ID से पकड़ा है
+
+        // लोडिंग शुरू
+        submitBtn.disabled = true;
+        if(btnText) btnText.innerText = "Processing...";
+        if(loader) loader.classList.remove('hidden');
+
+        // नकली डिले (2 सेकंड)
+        setTimeout(() => {
+            // लोडिंग खत्म
+            if(loader) loader.classList.add('hidden');
+            if(btnText) btnText.innerText = "Submit";
+            submitBtn.disabled = false;
+
+            // पॉपअप दिखाना
+            if(modal) {
+                modal.classList.remove('hidden');
+            }
+            form.reset(); 
+        }, 2000);
+    });
+});
+// पॉपअप के बाहर (Overlay पर) क्लिक करने से बंद होना
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('success-modal');
+    
+    // अगर क्लिक 'success-modal' (काले बैकग्राउंड) पर हुआ है, तो बंद करो
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+const backToTopBtn = document.getElementById('backToTop');
+
+// स्क्रॉल चेक करने के लिए
+window.addEventListener('scroll', () => {
+    // अगर पेज 400px से ज्यादा नीचे स्क्रॉल हुआ है तो बटन दिखाओ
+    if (window.scrollY > 400) {
+        backToTopBtn.classList.remove('scale-0');
+        backToTopBtn.classList.add('scale-100');
+    } else {
+        backToTopBtn.classList.remove('scale-100');
+        backToTopBtn.classList.add('scale-0');
+    }
+});
+
+// बटन क्लिक होने पर ऊपर जाने का लॉजिक
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+const themeToggleBtn = document.getElementById('theme-toggle');
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+// 1. चेक करें कि यूजर ने पहले क्या चुना था
+if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+    sunIcon.classList.remove('hidden');
+    moonIcon.classList.add('hidden');
+}
+
+// 2. बटन क्लिक होने पर स्विच करें
+themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    const isLight = document.body.classList.contains('light-mode');
+    
+    // आइकॉन बदलें
+    if (isLight) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'light');
+    } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+        localStorage.setItem('theme', 'dark');
+    }
+});
     </script>
 </body>
 </html>
