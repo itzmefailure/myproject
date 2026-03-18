@@ -6,24 +6,14 @@ const cors = require('cors');
 
 const app = express();
 
-
-// --- 1. Middleware (Hamesha top par) ---
+// --- 1. Middleware ---
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname)));
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
-// --- 2. MongoDB Connection ---
-// server.js mein connection wala part aise check karo
-mongoose.connect(process.env.MONGO_URI)
-    .then(async () => {
-        console.log('✅ M Square Database Connected');
-        await initSettings(); // Yahan call karna zaroori hai
-    })
-    .catch(err => console.error('❌ Connection Error:', err));
-// --- 3. Database Schemas (Models) ---
+// --- 2. Database Schemas & Models ---
+
+// Admission Schema
 const AdmissionSchema = new mongoose.Schema({
     full_name: { type: String, required: true },
     email: { type: String, required: true },
@@ -32,101 +22,108 @@ const AdmissionSchema = new mongoose.Schema({
     message: String,
     submittedAt: { type: Date, default: Date.now }
 });
+const Admission = mongoose.model('Admission', AdmissionSchema);
 
+// Contact Schema
 const ContactSchema = new mongoose.Schema({
     contact_subject: { type: String, required: true },
     contact_message: { type: String, required: true },
     submittedAt: { type: Date, default: Date.now }
 });
-
-const Admission = mongoose.model('Admission', AdmissionSchema);
 const Contact = mongoose.model('Contact', ContactSchema);
-// --- ADMISSION FORM ROUTE ---
+
+// Settings Schema (for Admin Password)
+const SettingsSchema = new mongoose.Schema({
+    admin_password: { type: String, default: "M2Banda2026" }
+});
+const Settings = mongoose.model('Settings', SettingsSchema);
+
+// --- 3. Helper Functions ---
+
+// Initializes default settings if DB is empty
+async function initSettings() {
+    try {
+        const check = await Settings.findOne();
+        if (!check) {
+            await new Settings().save();
+            console.log('✅ Default Admin Settings Initialized');
+        }
+    } catch (err) {
+        console.error('❌ InitSettings Error:', err);
+    }
+}
+
+// --- 4. MongoDB Connection ---
+mongoose.connect(process.env.MONGO_URI)
+    .then(async () => {
+        console.log('✅ M Square Database Connected');
+        await initSettings(); 
+    })
+    .catch(err => console.error('❌ Connection Error:', err));
+
+// --- 5. API Routes ---
+
+// Serve Frontend
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Submit Admission Form
 app.post('/api/admissions', async (req, res) => {
     try {
-        const { full_name, email, stream, subject, message } = req.body;
-
-        const newAdmission = new Admission({
-            full_name,
-            email,
-            stream,
-            subject,
-            message
-        });
-
+        const newAdmission = new Admission(req.body);
         await newAdmission.save();
         res.status(201).json({ success: true, message: "Admission data saved!" });
     } catch (error) {
-        console.error("Error saving admission:", error);
         res.status(500).json({ success: false, message: "Server Error: Data save nahi hua" });
     }
 });
 
-// --- CONTACT FORM ROUTE ---
+// Submit Contact Form
 app.post('/api/contact', async (req, res) => {
     try {
-        const { contact_subject, contact_message } = req.body;
-
-        const newContact = new Contact({
-            contact_subject,
-            contact_message
-        });
-
+        const newContact = new Contact(req.body);
         await newContact.save();
         res.status(201).json({ success: true, message: "Contact message saved!" });
     } catch (error) {
-        console.error("Error saving contact:", error);
         res.status(500).json({ success: false, message: "Server Error" });
     }
 });
 
-// --- 4. API Endpoints (Routes) ---
-
-// Admission Form Route
-// REPLACE this in your server.js
+// Admin Login (Checks Database Password)
 app.post('/api/admin/login', async (req, res) => {
     try {
         const { password } = req.body;
-
-        // 1. Database se current settings (password) uthao
-        const settings = await Settings.findOne(); 
-
-        // 2. Check karo ki kya user ka input DB wale password se match ho raha hai
+        const settings = await Settings.findOne();
         if (settings && password === settings.admin_password) {
             res.json({ success: true });
         } else {
             res.status(401).json({ success: false, message: "Invalid Password" });
         }
     } catch (error) {
-        console.error("Login Error:", error);
         res.status(500).json({ success: false, error: "Server Error" });
     }
 });
 
-// Contact Form Route
-app.post('/api/contact', async (req, res) => {
+// Update Admin Password
+app.post('/api/admin/update-password', async (req, res) => {
     try {
-        const newMessage = new Contact(req.body);
-        await newMessage.save();
-        res.status(201).json({ success: true, message: "Message Saved!" });
+        const { currentPassword, newPassword } = req.body;
+        const settings = await Settings.findOne();
+
+        if (currentPassword === settings.admin_password) {
+            settings.admin_password = newPassword;
+            await settings.save();
+            res.json({ success: true, message: "Password updated successfully!" });
+        } else {
+            res.status(400).json({ success: false, message: "Current password is wrong" });
+        }
     } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
+        res.status(500).json({ success: false, error: "Server Error" });
     }
 });
 
-// Login Check Route
-app.post('/api/admin/login', (req, res) => {
-    const { password } = req.body;
-    const ADMIN_PASSWORD = process.env.ADMIN_PASS || "M2Banda2026"; 
-
-    if (password === ADMIN_PASSWORD) {
-        res.json({ success: true });
-    } else {
-        res.status(401).json({ success: false, message: "Wrong Password" });
-    }
-});
-
-// Saara data fetch karne ke liye (Admin Only)
+// Fetch All Data (Admin Panel)
 app.get('/api/admin/data', async (req, res) => {
     try {
         const admissions = await Admission.find().sort({ submittedAt: -1 });
@@ -137,61 +134,20 @@ app.get('/api/admin/data', async (req, res) => {
     }
 });
 
-// Data delete karne ke liye
+// Delete Entry
 app.delete('/api/admin/delete/:type/:id', async (req, res) => {
     try {
         const { type, id } = req.params;
         if (type === 'admission') await Admission.findByIdAndDelete(id);
         else await Contact.findByIdAndDelete(id);
-        res.json({ message: "Deleted successfully" });
+        res.json({ success: true, message: "Deleted successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-// --- 5. Server Start (Hamesha Last mein) ---
+// --- 6. Server Start ---
 const PORT = process.env.PORT || 5000;
-app.listen(PORT,'0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
-
-// 1. Password Schema
-const SettingsSchema = new mongoose.Schema({
-    admin_password: { type: String, default: "M2Banda2026" } // Default password
-});
-const Settings = mongoose.model('Settings', SettingsSchema);
-
-// 2. Initial Setup (Agar database khali hai toh default password daalna)
-async function initSettings() {
-    const check = await Settings.findOne();
-    if (!check) await new Settings().save();
-}
-initSettings();
-
-// 3. Login Route Update (Ab DB se check karega)
-app.post('/api/admin/login', async (req, res) => {
-    const { password } = req.body;
-    const settings = await Settings.findOne();
-    if (password === settings.admin_password) {
-        res.json({ success: true });
-    } else {
-        res.status(401).json({ success: false });
-    }
-});
-
-// 4. Change Password Route (Naya Route)
-app.post('/api/admin/update-password', async (req, res) => {
-    const { currentPassword, newPassword } = req.body;
-    const settings = await Settings.findOne();
-
-    if (currentPassword === settings.admin_password) {
-        settings.admin_password = newPassword;
-        await settings.save();
-        res.json({ success: true, message: "Password updated successfully!" });
-    } else {
-        res.status(400).json({ success: false, message: "Current password is wrong" });
-    }
-});
-
-
-    
