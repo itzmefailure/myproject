@@ -41,6 +41,44 @@ const ContactSchema = new mongoose.Schema({
 
 const Admission = mongoose.model('Admission', AdmissionSchema);
 const Contact = mongoose.model('Contact', ContactSchema);
+// --- ADMISSION FORM ROUTE ---
+app.post('/api/admissions', async (req, res) => {
+    try {
+        const { full_name, email, stream, subject, message } = req.body;
+
+        const newAdmission = new Admission({
+            full_name,
+            email,
+            stream,
+            subject,
+            message
+        });
+
+        await newAdmission.save();
+        res.status(201).json({ success: true, message: "Admission data saved!" });
+    } catch (error) {
+        console.error("Error saving admission:", error);
+        res.status(500).json({ success: false, message: "Server Error: Data save nahi hua" });
+    }
+});
+
+// --- CONTACT FORM ROUTE ---
+app.post('/api/contact', async (req, res) => {
+    try {
+        const { contact_subject, contact_message } = req.body;
+
+        const newContact = new Contact({
+            contact_subject,
+            contact_message
+        });
+
+        await newContact.save();
+        res.status(201).json({ success: true, message: "Contact message saved!" });
+    } catch (error) {
+        console.error("Error saving contact:", error);
+        res.status(500).json({ success: false, message: "Server Error" });
+    }
+});
 
 // --- 4. API Endpoints (Routes) ---
 
