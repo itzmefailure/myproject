@@ -115,12 +115,11 @@
             const errorMsg = document.getElementById('error-msg');
 
             // Security: We send password to server to check
-            const response = await fetch('http://localhost:5000/api/admin/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password })
-            });
-
+            const response = await fetch('/api/admin/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password })
+});
             const result = await response.json();
 
             if (result.success) {

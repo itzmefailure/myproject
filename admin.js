@@ -21,7 +21,7 @@ let currentTab = 'admissions';
 async function loadData() {
     console.log("Attempting to fetch data from server...");
     try {
-        const response = await fetch('http://localhost:5000/api/admin/data');
+        const response = await fetch('/api/admin/data')
         if (!response.ok) throw new Error('Server response was not ok');
         
         allData = await response.json();
@@ -112,8 +112,13 @@ function switchTab(tab) {
 
 async function deleteItem(type, id) {
     if(!confirm("Delete this record?")) return;
-    await fetch(`http://localhost:5000/api/admin/delete/${type}/${id}`, { method: 'DELETE' });
-    loadData();
+    
+    // ⚠️ Localhost hata kar sirf '/api/...' rakhein
+    await fetch(`/api/admin/delete/${type}/${id}`, { 
+        method: 'DELETE' 
+    });
+    
+    loadData(); // Data refresh karne ke liye
 }
 
 // Excel Export
@@ -144,12 +149,12 @@ async function updatePassword() {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/api/admin/update-password', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ currentPassword, newPassword })
-        });
-
+    // ⚠️ 'http://localhost:5000' hata kar sirf '/api/...' rakhein
+    const response = await fetch('/api/admin/update-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currentPassword, newPassword })
+    });
         const result = await response.json();
         
         if (result.success) {

@@ -66,11 +66,11 @@ forms.forEach(form => {
 
         try {
             // Server call (Apna port check kar lena, maine 5000 rakha hai)
-            const response = await fetch(`http://localhost:5000${endpoint}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+            const response = await fetch(`${endpoint}`, { // 👈 Localhost wala part hata diya
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+});
 
             if(response.ok) {
                 document.getElementById('success-modal').classList.remove('hidden');
