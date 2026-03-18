@@ -1,13 +1,19 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const cors = require('cors');
 
 const app = express();
 
+
 // --- 1. Middleware (Hamesha top par) ---
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname)));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // --- 2. MongoDB Connection ---
 // server.js mein connection wala part aise check karo
