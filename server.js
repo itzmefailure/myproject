@@ -154,3 +154,22 @@ app.post('/api/admin/update-password', async (req, res) => {
         res.status(400).json({ success: false, message: "Current password is wrong" });
     }
 });
+document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Page refresh hone se rokega
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/api/admissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        alert("✅ Admission Form Submitted Successfully!");
+        e.target.reset(); // Form khali kar dega
+    } else {
+        alert("❌ Error: Form submit nahi hua!");
+    }
+});
