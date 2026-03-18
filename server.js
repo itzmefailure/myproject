@@ -113,9 +113,10 @@ app.delete('/api/admin/delete/:type/:id', async (req, res) => {
 
 // --- 5. Server Start (Hamesha Last mein) ---
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
+
 // 1. Password Schema
 const SettingsSchema = new mongoose.Schema({
     admin_password: { type: String, default: "M2Banda2026" } // Default password
