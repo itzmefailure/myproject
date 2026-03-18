@@ -7,8 +7,9 @@
     <meta name="description" content="M Square Institute in Banda - Premium coaching for Boards, Competitive Exams, and IT skills like Generative AI and Data Science.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; }
+    body { font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; }
         .gold-text { color: #D4AF37; }
         .gold-bg { background-color: #D4AF37; }
         .gold-border { border-color: #D4AF37; }
@@ -28,8 +29,8 @@
     border-radius: 12px;
     max-width: 800px;
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
-  }
-  .gold-btn-contact {
+}
+.gold-btn-contact {
     background: #D4AF37;
     color: #000;
     font-weight: bold;
@@ -38,7 +39,7 @@
     display: inline-block;
     margin-top: 10px;
     transition: 0.3s;
-  }
+}
 /* स्मूथ स्क्रॉलिंग के लिए */
 html {
     scroll-behavior: smooth;
@@ -136,14 +137,70 @@ body.light-mode .text-zinc-300,
 body.light-mode .text-zinc-500 {
     color: #4b5563;
 }
+.announcement-box {
+    background-color: #fff3cd;
+    border: 2px solid #ffeeba;
+    border-left: 8px solid #856404;
+    color: #856404;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 800px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.warning-icon {
+    font-size: 40px;
+}
+
+.text-container h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: #533f03;
+}
+
+.text-container p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.contact-number {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: #856404;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+  /* Responsive for Mobile */
+@media (max-width: 600px) {
+    .announcement-content {
+    flex-direction: column;
+    text-align: center;
+    }
+    .warning-icon {
+    font-size: 50px;
+    }
+}
     </style>
 </head>
-<button id="backToTop" class="fixed bottom-8 right-8 gold-bg text-black p-3 rounded-full shadow-2xl transition-all duration-300 transform scale-0 z-[60] hover:scale-110 hover:bg-white active:scale-95">
+<body>
+    <button id="backToTop" class="fixed bottom-8 right-8 gold-bg text-black p-3 rounded-full shadow-2xl transition-all duration-300 transform scale-0 z-[60] hover:scale-110 hover:bg-white active:scale-95">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
     </svg>
 </button>
-<body>
 
     <nav class="p-6 border-b border-zinc-800 sticky top-0 bg-black z-50">
     <div class="flex justify-between items-center">
@@ -290,7 +347,7 @@ body.light-mode .text-zinc-500 {
         <textarea name="contact_message" placeholder="Your Message" rows="4" class="form-input" required></textarea>
         
         <div class="flex gap-2">
-           <button type="submit" class="submit-btn w-full md:w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition uppercase tracking-wider flex items-center justify-center gap-2">
+        <button type="submit" class="submit-btn w-full md:w-1/2 gold-bg text-black font-bold py-3 rounded hover:bg-white transition uppercase tracking-wider flex items-center justify-center gap-2">
     <span class="btn-text">Submit</span>
     <div class="loader hidden w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
 </button>
@@ -316,257 +373,20 @@ body.light-mode .text-zinc-500 {
         <p class="mt-2">Designed for Excellence.</p>
         <p id="last-updated" class="mt-4 text-xs text-zinc-500 italic"></p>
         <div class="announcement-box">
-  <div class="announcement-box-modern mx-4">
-  <div class="flex flex-col md:flex-row items-center gap-6">
+<div class="announcement-box-modern mx-4">
+<div class="flex flex-col md:flex-row items-center gap-6">
     <div class="text-4xl">📢</div>
     <div class="text-center md:text-left">
-      <h3 class="text-xl font-bold gold-text mb-2">Coming Soon: Banda (UP) 210001</h3>
-      <p class="text-zinc-300 text-sm md:text-base">
+    <h3 class="text-xl font-bold gold-text mb-2">Coming Soon: Banda (UP) 210001</h3>
+    <p class="text-zinc-300 text-sm md:text-base">
         जो भी चाहते हैं यह वेबसाइट अपने शहर <b>बाँदा</b> में लॉन्च हो, वे स्क्रीनशॉट लेकर नीचे दिए नंबर पर <b>"Okey"</b> लिखकर भेजें।
-      </p>
-      <a href="https://wa.me/918423996254" class="gold-btn-contact">WhatsApp: 8423996254</a>
+    </p>
+    <a href="https://wa.me/918423996254" class="gold-btn-contact">WhatsApp: 8423996254</a>
     </div>
-  </div>
 </div>
-<style>
-  .announcement-box {
-    background-color: #fff3cd;
-    border: 2px solid #ffeeba;
-    border-left: 8px solid #856404;
-    color: #856404;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    max-width: 800px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  .announcement-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .warning-icon {
-    font-size: 40px;
-  }
-
-  .text-container h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.4rem;
-    color: #533f03;
-  }
-
-  .text-container p {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  .contact-number {
-    margin-top: 15px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: #856404;
-    color: white;
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 5px;
-  }
-
-  /* Responsive for Mobile */
-  @media (max-width: 600px) {
-    .announcement-content {
-      flex-direction: column;
-      text-align: center;
-    }
-    .warning-icon {
-      font-size: 50px;
-    }
-  }
-</style>
+</div>
     </footer>
 
-    <script>
-        const data = {
-            'UP Board': ['Math', 'Physics', 'Chemistry', 'Biology', 'English'],
-            'CBSE Board': ['Math', 'Physics', 'Chemistry', 'Biology', 'English'],
-            'Competitive': ['Math', 'Reasoning', 'GK and GS'],
-            'IT Field': ['Data Science', 'Full Stack Developer', 'Cyber Security', 'Generative AI', 'Robotics', 'Web Development', 'App Development']
-        };
-
-        function showSubjects(stream) {
-            document.getElementById('stream-container').classList.add('hidden-section');
-            const subjectView = document.getElementById('subject-view');
-            const title = document.getElementById('selected-stream-title');
-            const container = document.getElementById('subject-container');
-
-            subjectView.classList.remove('hidden-section');
-            title.innerText = stream;
-            container.innerHTML = '';
-
-            data[stream].forEach(sub => {
-                const div = document.createElement('div');
-                div.className = 'card-gradient p-6 rounded-xl text-center border gold-border/20';
-                div.innerHTML = `<p class="font-semibold">${sub}</p>`;
-                container.appendChild(div);
-            });
-            
-            subjectView.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function goBack() {
-            document.getElementById('stream-container').classList.remove('hidden-section');
-            document.getElementById('subject-view').classList.add('hidden-section');
-        }
-        
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
-
-function toggleMenu() {
-    mobileMenu.classList.add('hidden');
-}
-// Scroll Reveal Animation Logic
-const revealSections = () => {
-    const sections = document.querySelectorAll('section');
-    const triggerBottom = window.innerHeight * 0.85; // 85% स्क्रीन पर आते ही ट्रिगर होगा
-
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if (sectionTop < triggerBottom) {
-            section.classList.add('active');
-        }
-    });
-};
-
-window.addEventListener('scroll', revealSections);
-window.addEventListener('load', () => {
-    
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('reveal');
-    });
-    revealSections(); 
-});
-function goBack() {
-    document.getElementById('stream-container').classList.remove('hidden-section');
-    document.getElementById('subject-view').classList.add('hidden-section');
-    window.scrollTo({ top: document.getElementById('streams').offsetTop - 100, behavior: 'smooth' });
-}
-// 1. पॉपअप बंद करने का फंक्शन (इसे सबसे ऊपर या कहीं भी रख सकते हैं)
-function closeModal() {
-    const successModal = document.getElementById('success-modal');
-    if (successModal) {
-        successModal.classList.add('hidden');
-    }
-}
-
-// 2. फॉर्म सबमिशन लॉजिक
-const forms = document.querySelectorAll('form');
-
-forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault(); 
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const loader = submitBtn.querySelector('.loader');
-        const modal = document.getElementById('success-modal'); // यहाँ ID से पकड़ा है
-
-        // लोडिंग शुरू
-        submitBtn.disabled = true;
-        if(btnText) btnText.innerText = "Processing...";
-        if(loader) loader.classList.remove('hidden');
-
-        // नकली डिले (2 सेकंड)
-        setTimeout(() => {
-            // लोडिंग खत्म
-            if(loader) loader.classList.add('hidden');
-            if(btnText) btnText.innerText = "Submit";
-            submitBtn.disabled = false;
-
-            // पॉपअप दिखाना
-            if(modal) {
-                modal.classList.remove('hidden');
-            }
-            form.reset(); 
-        }, 2000);
-    });
-});
-// पॉपअप के बाहर (Overlay पर) क्लिक करने से बंद होना
-window.addEventListener('click', (event) => {
-    const modal = document.getElementById('success-modal');
-    
-    // अगर क्लिक 'success-modal' (काले बैकग्राउंड) पर हुआ है, तो बंद करो
-    if (event.target === modal) {
-        closeModal();
-    }
-});
-const backToTopBtn = document.getElementById('backToTop');
-
-// स्क्रॉल चेक करने के लिए
-window.addEventListener('scroll', () => {
-    // अगर पेज 400px से ज्यादा नीचे स्क्रॉल हुआ है तो बटन दिखाओ
-    if (window.scrollY > 400) {
-        backToTopBtn.classList.remove('scale-0');
-        backToTopBtn.classList.add('scale-100');
-    } else {
-        backToTopBtn.classList.remove('scale-100');
-        backToTopBtn.classList.add('scale-0');
-    }
-});
-
-// बटन क्लिक होने पर ऊपर जाने का लॉजिक
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-const themeToggleBtn = document.getElementById('theme-toggle');
-const sunIcon = document.getElementById('sun-icon');
-const moonIcon = document.getElementById('moon-icon');
-
-// 1. चेक करें कि यूजर ने पहले क्या चुना था
-if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-    sunIcon.classList.remove('hidden');
-    moonIcon.classList.add('hidden');
-}
-
-// 2. बटन क्लिक होने पर स्विच करें
-themeToggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    
-    const isLight = document.body.classList.contains('light-mode');
-    
-    // आइकॉन बदलें
-    if (isLight) {
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-        localStorage.setItem('theme', 'light');
-    } else {
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-        localStorage.setItem('theme', 'dark');
-    }
-});
-// ऑटोमैटिक लास्ट अपडेटेड डेट दिखाने के लिए
-const lastUpdatedElement = document.getElementById('last-updated');
-
-if (lastUpdatedElement) {
-    // document.lastModified फाइल के आखिरी बार सेव होने का समय बताता है
-    const lastMod = new Date(document.lastModified);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = lastMod.toLocaleDateString('en-IN', options);
-    
-    lastUpdatedElement.innerText = "Site Last Updated: " + formattedDate;
-}
-    </script>
+<script src="app.js"></script>
 </body>
 </html>

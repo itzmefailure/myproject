@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Square | Executive Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #050505; color: #fff; }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F1D382 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.1); }
+        .sidebar { border-right: 1px solid rgba(212, 175, 55, 0.1); }
+        tr:hover { background: rgba(212, 175, 55, 0.05); }
+    </style>
+</head>
+<body class="hidden" id="admin-body"> <div class="flex h-screen">
+        <aside class="w-64 sidebar p-8 flex flex-col justify-between">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tighter mb-12"><span class="text-[#D4AF37]">M</span> SQUARE</h1>
+                <nav class="space-y-6">
+                    <button onclick="switchTab('admissions')" class="block w-full text-left hover:text-[#D4AF37] transition">Admissions</button>
+                    <button onclick="switchTab('contacts')" class="block w-full text-left hover:text-[#D4AF37] transition">Enquiries</button>
+                    <button onclick="switchTab('settings')" class="block w-full text-left hover:text-[#D4AF37] transition">Security Settings</button>
+                </nav>
+            </div>
+            <button onclick="location.reload()" class="text-xs uppercase tracking-widest text-zinc-500 hover:text-white">Logout</button>
+        </aside>
+
+        <main class="flex-1 p-12 overflow-y-auto">
+            <header class="flex justify-between items-end mb-12">
+                <div>
+                    <p class="text-zinc-500 text-sm mb-1 uppercase tracking-widest">Executive Dashboard</p>
+                    <h2 id="tab-title" class="text-4xl font-bold">Admissions</h2>
+                </div>
+                <div class="glass-card px-6 py-3 rounded-2xl flex gap-8">
+                    <div class="flex gap-4">
+    <button onclick="downloadCSV()" class="glass-card px-4 py-2 rounded-xl text-[10px] uppercase tracking-widest border-none hover:bg-[#D4AF37] hover:text-black transition-all">
+        Export to Excel (CSV)
+    </button>
+    
+    <div class="glass-card px-6 py-3 rounded-2xl flex gap-8">
+        <div><p class="text-xs text-zinc-500 uppercase">Total Hits</p><p id="count-box" class="text-xl font-bold text-[#D4AF37]">0</p></div>
+    </div>
+</div>
+                    <div><p class="text-xs text-zinc-500 uppercase">Total Hits</p><p id="count-box" class="text-xl font-bold text-[#D4AF37]">0</p></div>
+                </div>
+            </header>
+            <div class="mb-10 flex justify-end">
+    <div class="glass-card px-6 py-3 rounded-2xl w-full max-w-md flex items-center gap-4 group focus-within:border-[#D4AF37] transition-all duration-500">
+        <span class="text-[#D4AF37] opacity-50 group-focus-within:opacity-100">🔍</span>
+        <input type="text" id="search-input" oninput="filterData()" 
+            placeholder="Search by name, email or course..." 
+            class="bg-transparent border-none outline-none text-sm w-full text-zinc-300 placeholder:text-zinc-600 tracking-wide">
+    </div>
+</div>
+
+            <div class="glass-card rounded-3xl overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-white/5 text-zinc-400 text-xs uppercase tracking-widest">
+                        <tr id="table-head">
+                            </tr>
+                    </thead>
+                    <tbody id="data-table" class="text-sm text-zinc-300">
+                        </tbody>
+                </table>
+            </div>
+            <div id="settings-view" class="hidden">
+    <div class="glass-card p-10 rounded-3xl max-w-lg mx-auto border-gold/20">
+        <h3 class="text-2xl font-bold mb-8 gold-text">Change Admin Access Key</h3>
+        <div class="space-y-6">
+            <input type="password" id="current-pass" placeholder="Current Password" class="w-full bg-transparent border-b border-zinc-800 py-3 outline-none focus:border-gold">
+            <input type="password" id="new-pass" placeholder="New Royal Password" class="w-full bg-transparent border-b border-zinc-800 py-3 outline-none focus:border-gold">
+            <button onclick="updatePassword()" class="gold-btn w-full py-4 rounded-xl mt-6">Apply New Security Key</button>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
