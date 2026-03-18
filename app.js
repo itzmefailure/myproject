@@ -135,3 +135,22 @@ const lastUpdatedElement = document.getElementById('last-updated');
 if (lastUpdatedElement) {
     lastUpdatedElement.innerText = "Site Last Updated: " + new Date(document.lastModified).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
+document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+
+        const response = await fetch('/api/admissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert("✅ Admission Form Submitted!");
+            e.target.reset();
+        } else {
+            alert("❌ Submission Failed!");
+        }
+    });
