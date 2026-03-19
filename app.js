@@ -40,8 +40,13 @@ const mobileMenu = document.getElementById('mobile-menu');
 menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 function toggleMenu() { mobileMenu.classList.add('hidden'); }
 
-// 4. REAL Form Submission (Connects to MongoDB)
+// --- 4. REAL Form Submission (Updated Fix) ---
 const forms = document.querySelectorAll('form');
+
+// यह लाइन चेक करेगी कि आप लोकल लैपटॉप पर हैं या लाइव होस्टिंग पर
+const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"  // लैपटॉप के लिए (Backend Port)
+    : ""; // लाइव वेबसाइट के लिए (Current Domain)
 
 forms.forEach(form => {
     form.addEventListener('submit', async (e) => {
@@ -51,13 +56,12 @@ forms.forEach(form => {
         const btnText = submitBtn.querySelector('.btn-text');
         const loader = submitBtn.querySelector('.loader');
         
-        // Form ka data nikalne ke liye
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData.entries());
 
-        // Decide endpoint based on form container ID
+        // स्पेलिंग ठीक की गई: admissions (s जोड़ा गया है)
         const isAdmission = form.closest('#admission');
-        const endpoint = isAdmission ? '/api/admission' : '/api/contact';
+        const endpoint = isAdmission ? '/api/admissions' : '/api/contact';
 
         // UI Feedback: Start Loading
         submitBtn.disabled = true;
@@ -65,24 +69,25 @@ forms.forEach(form => {
         if(loader) loader.classList.remove('hidden');
 
         try {
-            // Server call (Apna port check kar lena, maine 5000 rakha hai)
-            const response = await fetch(`${endpoint}`, { // 👈 Localhost wala part hata diya
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-});
+            // अब यह URL अपने आप सही पोर्ट (5000) पकड़ लेगा
+            const response = await fetch(`${BASE_URL}${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json(); // सर्वर का मैसेज पढ़ने के लिए
 
             if(response.ok) {
                 document.getElementById('success-modal').classList.remove('hidden');
                 form.reset();
             } else {
-                alert("Server error! Please try again.");
+                alert("Server Error: " + (result.message || "Something went wrong"));
             }
         } catch (error) {
             console.error("Error:", error);
-            alert("Connection failed! Make sure your server is running.");
+            alert("Connection failed! अपना Backend Server (Node.js) चेक करें।");
         } finally {
-            // UI Feedback: Stop Loading
             if(loader) loader.classList.add('hidden');
             if(btnText) btnText.innerText = "Submit";
             submitBtn.disabled = false;
@@ -135,22 +140,3 @@ const lastUpdatedElement = document.getElementById('last-updated');
 if (lastUpdatedElement) {
     lastUpdatedElement.innerText = "Site Last Updated: " + new Date(document.lastModified).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
-document.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
-
-        const response = await fetch('/api/admissions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            alert("✅ Admission Form Submitted!");
-            e.target.reset();
-        } else {
-            alert("❌ Submission Failed!");
-        }
-    });
